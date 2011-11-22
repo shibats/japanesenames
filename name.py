@@ -90,7 +90,6 @@ class Name:
 
 # kakusu counter
 
-print os.path.join(__file__, 'data/kakusu.tsv')
 base = os.path.dirname(__file__)
 kf = codecs.open(os.path.join(base, 'data/kakusu.tsv'), 'r', 'utf-8')
 kdic = {}
