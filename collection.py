@@ -15,6 +15,7 @@ __author__  = 'Atsushi Shibata <shibata@webcore.co.jp>'
 __docformat__ = 'plaintext'
 __licence__ = 'MIT'
 
+import os
 import re
 import codecs
 from name import Name
@@ -59,7 +60,9 @@ class CollectionBase:
         """
         A special method to returns iterator of the result.
         """
-        f = codecs.open(self.FILENAME, 'r', 'utf-8')
+        base = os.path.dirname(__file__)
+        f = codecs.open(os.path.join(base, self.FILENAME), 'r', 'utf-8')
+        #f = codecs.open(self.FILENAME, 'r', 'utf-8')
         for line in f:
             go = True
             for pat in self.patterns:
@@ -75,7 +78,6 @@ class CollectionBase:
         A special method to count a number of items in current settings.
         """
         return len(list(self.__iter__()))
-
 
 class BoysNameCollection(CollectionBase):
     FILENAME = 'data/mnamesj.tsv'
