@@ -70,13 +70,20 @@ class CollectionBase:
                 yield Name(line = line.replace('\n', ''), gender=self.GENDER)
 
 
+    def __len__(self):
+        """
+        A special method to count a number of items in current settings.
+        """
+        return len(list(self.__iter__()))
+
+
 class BoysNameCollection(CollectionBase):
-    FILENAME = 'data/bname.tsv'
+    FILENAME = 'data/mnamesj.tsv'
     GENDER = Name.BOY
 
 
 class GirlsNameCollection(CollectionBase):
-    FILENAME = 'data/gname.tsv'
+    FILENAME = 'data/wnamesj.tsv'
     GENDER = Name.GIRL
 
 
