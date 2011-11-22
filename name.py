@@ -15,6 +15,7 @@ __author__  = 'Atsushi Shibata <shibata@webcore.co.jp>'
 __docformat__ = 'plaintext'
 __licence__ = 'MIT'
 
+import os
 import codecs
 
 class Name:
@@ -61,16 +62,16 @@ class Name:
 
     def kakusu(self):
         """
-        A method to count kakusuu of the name.
+        A method to count kakusu of the name.
         """
-        return count_kakusuu(self.name)
+        return count_kakusu(self.name)
 
 
     def kakusu_at(self, index):
         """
-        A method to count kakusuu of one character at given index.
+        A method to count kakusu of one character at given index.
         """
-        return count_kakusuu(self.name[index])
+        return count_kakusu(self.name[index])
 
 
     def is_boy(self):
@@ -89,7 +90,9 @@ class Name:
 
 # kakusu counter
 
-kf = codecs.open('data/kakusu.tsv', 'r', 'utf-8')
+print os.path.join(__file__, 'data/kakusu.tsv')
+base = os.path.dirname(__file__)
+kf = codecs.open(os.path.join(base, 'data/kakusu.tsv'), 'r', 'utf-8')
 kdic = {}
 
 for line in kf:
