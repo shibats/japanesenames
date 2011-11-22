@@ -5,10 +5,11 @@ import unittest
 
 from nose.tools import *
 
-from collection import CollectionBase
-from name import Name
+from japanesenames.collection import CollectionBase
+from japanesenames.name import Name
 
 class QueryBaseTest(unittest.TestCase):
+
 
     def test_contains(self):
         q = CollectionBase()
@@ -50,3 +51,16 @@ class QueryBaseTest(unittest.TestCase):
         q.contains_in_furigana('c', 'v')
         assert_equal(list(q), [Name('rst\tcuvw')])
 
+
+    def test_len(self):
+        q = CollectionBase()
+        q.FILENAME = './tests/testnames.tsv'
+
+        q.patterns = []
+
+        assert_equal(len(q), 5)
+
+        q.patterns = []
+        q.contains_in_furigana('c')
+
+        assert_equal(len(q), 2)
