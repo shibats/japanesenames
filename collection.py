@@ -80,12 +80,12 @@ class CollectionBase:
         return len(list(self.__iter__()))
 
 class BoysNameCollection(CollectionBase):
-    FILENAME = 'data/mnamesj.tsv'
+    FILENAME = 'data/bname.tsv'
     GENDER = Name.BOY
 
 
 class GirlsNameCollection(CollectionBase):
-    FILENAME = 'data/wnamesj.tsv'
+    FILENAME = 'data/gname.tsv'
     GENDER = Name.GIRL
 
 
