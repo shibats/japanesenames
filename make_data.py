@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-from scrapers import scraper1, scraper2
+from scrapers import scraper1, scraper2, scraper3
 
 # This is a script to make japanese name data.
 #
@@ -17,8 +17,10 @@ from scrapers import scraper1, scraper2
 
 s1 = set(scraper1.scrape(0))
 s2 = set(scraper2.scrape(0))
+s3 = set(scraper3.scrape(0))
 
 s1.update(s2)
+s1.update(s3)
 f = open('./data/bname.tsv', 'w')
 f.write('\n'.join(s1))
 
@@ -27,7 +29,9 @@ f.write('\n'.join(s1))
 
 s1 = set(scraper1.scrape(1))
 s2 = set(scraper2.scrape(1))
+s3 = set(scraper3.scrape(1))
 
 s1.update(s2)
+s1.update(s3)
 f = open('./data/gname.tsv', 'w')
 f.write('\n'.join(s1))
