@@ -5,7 +5,7 @@ import unittest
 
 from nose.tools import *
 
-from name import Name, count_kakusuu
+from japanesenames.name import Name, count_kakusu
 
 
 class NameTest(unittest.TestCase):
