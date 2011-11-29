@@ -3,6 +3,7 @@
 from urllib import urlopen
 import re
 import sys
+from time import sleep
 
 
 def scrape(gender):
