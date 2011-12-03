@@ -37,9 +37,15 @@ def scrape(gender):
         for furi, kanji in s_list:
             try:
                 if gender == 0:
-                    k_list = [x.strip() for x in kanji.split('<BR>')]
+                    if '<BR>' in kanji:
+                        k_list = [x.strip() for x in kanji.split('<BR>')]
+                    else:
+                        k_list = [x.strip() for x in kanji.split('<br />')]
                 else:
-                    k_list = [x.strip() for x in kanji.split('<br />')]
+                    if '<BR>' in kanji:
+                        k_list = [x.strip() for x in kanji.split('<BR>')]
+                    else:
+                        k_list = [x.strip() for x in kanji.split('<br />')]
                 for k in k_list:
                     name_list.append('%s\t%s' % (k, furi))
             except:
@@ -48,4 +54,6 @@ def scrape(gender):
     return name_list
 
 if __name__ == '__main__':
-    scrape(1)
+    l = scrape(0)
+    for i in l:
+        print i
