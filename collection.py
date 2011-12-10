@@ -56,6 +56,15 @@ class CollectionBase:
             self.patterns.append('^.+?\s.*?%s.*?' % i)
 
 
+    def starts_with(self, *qlist):
+        """
+        a method to filter results only starting with given letters.
+        """
+
+        for i in qlist:
+            self.patterns.append('^.+?\s%s' % i)
+
+
     def __iter__(self):
         """
         A special method to returns iterator of the result.
