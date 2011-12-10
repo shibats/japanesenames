@@ -64,3 +64,14 @@ class QueryBaseTest(unittest.TestCase):
         q.contains_in_furigana('c')
 
         assert_equal(len(q), 2)
+
+    def test_starts_with(self):
+        q = CollectionBase()
+        q.FILENAME = './tests/testnames.tsv'
+
+        q.patterns = []
+        q.starts_with('c')
+        assert_equal(list(q), [Name('abc\tcde'), Name('rst\tcuvw')])
+        q.patterns = []
+        q.starts_with('i')
+        assert_equal(list(q), [Name('fgh\tijk')])
