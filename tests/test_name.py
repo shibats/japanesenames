@@ -36,5 +36,5 @@ class NameTest(unittest.TestCase):
         assert_equal(count_kakusu(u'あ'), 3)
         assert_equal(count_kakusu(u'わ'), 3)
         assert_equal(count_kakusu(u'あわ'), 6)
-        assert_equal(count_kakusu(u'狂'), 7)
+        assert_equal(count_kakusu(u'池'), 7)
         assert_raises(ValueError, count_kakusu, u'薔')
