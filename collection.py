@@ -20,6 +20,13 @@ import re
 import codecs
 from name import Name
 
+CACHE = {}
+def cached_open(path):
+    if path not in CACHE:
+        f = codecs.open(path, 'r', 'utf-8')
+        CACHE[path] = f.read()
+    return CACHE[path]
+
 class CollectionBase:
     """
     """
@@ -45,7 +52,7 @@ class CollectionBase:
 
         for i in qlist:
             self.patterns.append('^.*?%s.*?\s' % i)
-
+        return self
 
     def contains_in_furigana(self, *qlist):
         """
@@ -54,6 +61,7 @@ class CollectionBase:
 
         for i in qlist:
             self.patterns.append('^.+?\s.*?%s.*?' % i)
+        return self
 
 
     def starts_with(self, *qlist):
@@ -63,6 +71,7 @@ class CollectionBase:
 
         for i in qlist:
             self.patterns.append('^.+?\s%s' % i)
+        return self
 
 
     def __iter__(self):
@@ -70,9 +79,9 @@ class CollectionBase:
         A special method to returns iterator of the result.
         """
         base = os.path.dirname(__file__)
-        f = codecs.open(os.path.join(base, self.FILENAME), 'r', 'utf-8')
+        f = cached_open(os.path.join(base, self.FILENAME))
         #f = codecs.open(self.FILENAME, 'r', 'utf-8')
-        for line in f:
+        for line in f.split('\n'):
             go = True
             for pat in self.patterns:
                 if not re.findall(pat, line):
