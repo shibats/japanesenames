@@ -75,3 +75,16 @@ class QueryBaseTest(unittest.TestCase):
         q.patterns = []
         q.starts_with('i')
         assert_equal(list(q), [Name('fgh\tijk')])
+
+
+    def test_methodcailing(self):
+        q = CollectionBase()
+        q.FILENAME = './tests/testnames.tsv'
+        assert_equal(list(q.starts_with('c')),
+                     [Name('abc\tcde'), Name('rst\tcuvw')])
+        q.patterns = []
+        assert_equal(list(q.contains('a').starts_with('c')),
+                     [Name('abc\tcde')])
+
+
+
