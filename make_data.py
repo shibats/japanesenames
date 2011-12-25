@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-from scrapers import scraper1, scraper2, scraper3
+from scrapers import scraper1, scraper2, scraper3, scraper4
 
 # This is a script to make japanese name data.
 #
@@ -29,9 +29,11 @@ for line in f:
 s1 = set(scraper1.scrape(0))
 s2 = set(scraper2.scrape(0))
 s3 = set(scraper3.scrape(0))
+s4 = set(scraper4.scrape(0))
 
 s1.update(s2)
 s1.update(s3)
+s1.update(s4)
 
 # sort, validate
 bl = [x for x in list(s1) if len(x.split()) >= 2]
@@ -49,9 +51,11 @@ f.write('\n'.join(bl))
 s1 = set(scraper1.scrape(1))
 s2 = set(scraper2.scrape(1))
 s3 = set(scraper3.scrape(1))
+s4 = set(scraper4.scrape(1))
 
 s1.update(s2)
 s1.update(s3)
+s1.update(s4)
 
 # sort, validate
 gl = [x for x in list(s1) if len(x.split()) >= 2]
