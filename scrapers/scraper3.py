@@ -20,7 +20,7 @@ def scrape(gender):
     
     for n, u in enumerate(w_urls):
         print "Processing %d of %d" % (n+1, len(w_urls))
-        src = urlopen(u).read()
+        src = unicode(urlopen(u).read(), 'utf-8', 'replace')
         sleep(1)       # wait 1 second each time after reading a url
         if gender == 0:
             pat = r"""<table class="boy">.+?</table>"""
